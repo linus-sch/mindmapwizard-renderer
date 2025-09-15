@@ -1,31 +1,33 @@
-# Mind Map Wizard — Renderer
 
-Lightweight JavaScript that renders Markdown as SVG mind maps. This project is provided by Mind Map Wizard for developers to inspect how the rendering engine works.
+
+<div align="center">
+  <h2>
+    <img alt="Mind Map Wizard" src="https://mindmapwizard.com/img/logo-mmw-dev.png" width="100px" alt="Mind Map Wizard Engine Logo"/>
+    <br>
+    Mind Map Wizard — Renderer
+      <br><br> 
+  </h2>
+
+</div>
+
+
+
+A lightweight JavaScript tool that converts Markdown text into colorful SVG mind maps for rendering on the client or server side. It is designed to be self-contained and easy to use, with no external dependencies.<br>
+
+Demo: https://js.mindmapwizard.com
 
 <br>
-
-- Demo: https://js.mindmapwizard.com
-
-<br>
-
-
-## What this is
-This repository contains a small, self-contained HTML/CSS/JS renderer that converts Markdown into SVG mind maps. It is intended as a developer-facing demo and learning resource. does not power Mind Map Wizard's webapp.
-
-<br>
-
 
 ## Features
-- Parses simple Markdown headings and lists into a hierarchical mind map
-- Optimized for light and darkmode use
-- Renders to SVG for crisp visuals and easy styling
-- Minimal, dependency-free code
+- Parses simple Markdown headings and lists into a hierarchical mind map.
+- Optimized for light and dark mode use.
+- Renders to SVG for crisp visuals and easy styling.
+- Minimal, dependency-free code.
+
 
 <br>
 
-
-## Notable inspiration
-This project is heavily inspired by markmap (https://github.com/markmap/markmap). See that project for a more feature-rich implementation and more functionality.
+This project was heavily inspired by markmap (https://github.com/markmap/markmap). See that project for a more feature-rich implementation and more functionality.
 
 <br>
 
@@ -62,8 +64,3 @@ If you share demos, screenshots, or examples publicly, include this credit where
 
 ## Contributing
 This repo is intended as a demo/reference. Contributions are welcome as output improvements or bug reports. Do not submit changes that attempt to remove or weaken the license restrictions.
-
-<br>
-
-## Contact
-For permission to use this code beyond the license terms or for commercial inquiries, contact: linus@example.com
