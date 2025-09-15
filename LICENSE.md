@@ -1,4 +1,4 @@
-COPYRIGHT (c) 2025 Linus-sch
+COPYRIGHT Mind Map Wizard Renderer by Linus-sch
 
 ## LICENSE — Mind Map Wizard Renderer
 Personal Use Only; Attribution Required; No Online Distribution
@@ -6,7 +6,7 @@ Personal Use Only; Attribution Required; No Online Distribution
 Permission is granted to any individual to download, inspect, and use this software solely for personal, non-commercial purposes. Use for any commercial purpose, including but not limited to sale, licensing, sublicensing, inclusion in paid products or services, or use to provide hosted, online, cloud, or SaaS offerings, is strictly prohibited without prior written permission from the copyright holder.
 
 Conditions
-- **Attribution required.** Any permitted personal use that results in public display, screenshots, demonstrations, or distribution (for example, sharing code snippets on public forums or including parts of this code in publicly accessible repositories) must include a visible credit line: "Mind Map Wizard Renderer — Copyright (c) 2025 Linus-sch" and a link to the original repository where reasonably possible.
+- **Attribution required.** Any permitted personal use that results in public display, screenshots, demonstrations, or distribution (for example, sharing code snippets on public forums or including parts of this code in publicly accessible repositories) must include a visible credit line: "Mind Map Wizard Renderer by Linus-sch" and a link to the original repository where reasonably possible.
 - **No online distribution or hosting.** You may not publish, host, deploy, or otherwise make the Software available over the internet or any network to third parties (including as part of a web application, API, SaaS, or content delivery) without prior written permission.
 - **No sublicensing or sublicensed redistribution.** You may not grant others any rights to use the Software beyond those expressly granted here.
 - **No sale.** Selling the Software or any portion thereof, including as part of a paid product, is prohibited.
