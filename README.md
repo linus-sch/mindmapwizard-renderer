@@ -7,7 +7,6 @@
     Mind Map Wizard — Renderer
       <br><br> 
   </h2>
-
 </div>
 
 
@@ -15,7 +14,6 @@
 A lightweight JavaScript tool that converts Markdown text into colorful SVG mind maps for rendering on the client or server side. It is designed to be self-contained and easy to use, with no external dependencies.<br>
 
 Demo: https://js.mindmapwizard.com
-
 <br>
 
 ## Features
@@ -23,12 +21,9 @@ Demo: https://js.mindmapwizard.com
 - Optimized for light and dark mode use.
 - Renders to SVG for crisp visuals and easy styling.
 - Minimal, dependency-free code.
-
-
 <br>
 
 This project was heavily inspired by markmap (https://github.com/markmap/markmap). See that project for a more feature-rich implementation and more functionality.
-
 <br>
 
 
@@ -45,7 +40,6 @@ open demo/index.html
 ```
 
 3. Edit the sample Markdown in demo/index.html (or load your own Markdown) to see live rendering to SVG.
-
 <br>
 
 
@@ -53,7 +47,6 @@ open demo/index.html
 - src/renderer.js — core JS that converts Markdown to SVG  
 - demo/index.html — simple page demonstrating the renderer  
 - demo/styles.css — minimal styling for demo and SVG  
-
 <br>
 
 ## Attribution
@@ -64,3 +57,17 @@ If you share demos, screenshots, or examples publicly, include this credit where
 
 ## Contributing
 This repo is intended as a demo/reference. Contributions are welcome as output improvements or bug reports. Do not submit changes that attempt to remove or weaken the license restrictions.
+<br>
+
+## Contact
+
+If you have any questions or feedback, please get in touch with us.
+<br>
+
+<a href="mailto:contact@mindmapwizard.com">contact@mindmapwizard.com</a>
+<br>
+<p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
+    <a href="#readme-top" style="text-decoration: none; color: #007bff; font-weight: bold;">
+        ↑ Back to Top ↑
+    </a>
+</p>
