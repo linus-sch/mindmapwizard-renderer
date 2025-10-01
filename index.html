@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind Map Wizard Renderer Demo</title>
+
+        <link rel="icon" type="image/png" href="/assets/favicon128.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="/assets/favicon96.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/assets/favicon64.png" sizes="48x48">
+        <link rel="icon" type="image/png" href="/assets/favicon48.png" sizes="64x48">
+        <link rel="icon" type="image/png" href="/assets/favicon32.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="/assets/favicon16.png" sizes="96x96">
+
+        <link rel="stylesheet" href="/styles.css">
+
+        <!-- Title & Description -->
+        <meta name="description" content="A lightweight JavaScript tool that converts Markdown text into colorful SVG mind maps.">
+
+        <!-- Open Graph (for social sharing) -->
+        <meta property="og:title" content="Mind Map Wizard Renderer Demo">
+        <meta property="og:description" content="A lightweight JavaScript tool that converts Markdown text into colorful SVG mind maps.
+        ">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="/assets/meta-img-light.jpg">
+        <meta property="og:url" content="https://js.mindmapwizard.com">
+
+        <!-- Twitter Card (optional, for better sharing) -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Mind Map Wizard Renderer Demo">
+        <meta name="twitter:description" content="A lightweight JavaScript tool for rendering Markdown as SVG mind maps.">
+        <meta name="twitter:image" content="/assets/meta-img-light.jpg">
+</head>
+<body>
+
+<main id="app-container">
+    <div id="editor-container">
+        <div class="pane-header">
+            <div>
+            <a href="https://github.com/linus-sch/mindmapwizard-renderer" style="text-decoration: none;" class="mmw-logo-desktop">
+                <img src="/assets/favicon64.png" alt="MMW Logo" width="35px" style="position: relative; top: 3px;">
+            </a>
+            Markdown</div>
+            </div>
+        <textarea id="markdown-editor" spellcheck="false"></textarea>
+    </div>
+    <div id="slider"></div>
+    <div id="preview-container">
+        <div class="pane-header">
+            <span>
+            <a href="https://github.com/linus-sch/mindmapwizard-renderer" style="text-decoration: none;" class="mmw-logo-mobile">
+                <img src="/assets/favicon64.png" alt="MMW Logo" width="35px" style="position: relative; top: 3px;">
+            </a>
+                Mind Map</span>
+            <div class="pane-controls">
+                <a href="https://github.com/linus-sch/mindmapwizard-renderer">
+                    <span class="hide-on-mobile">Source Code  
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right-icon lucide-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                    </span>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="github-icon">
+                        <path d="M12 .5C5.373.5 0 5.873 0 12.5c0 5.25 3.438 9.688 8.207 11.285.6.111.793-.261.793-.577 0-.287-.011-1.243-.017-2.25-3.338.724-4.043-1.607-4.043-1.607-.546-1.384-1.333-1.754-1.333-1.754-1.086-.743.083-.728.083-.728 1.202.084 1.83 1.236 1.83 1.236 1.067 1.826 2.8 1.297 3.48.992.108-.774.418-1.297.76-1.597-2.665-.303-5.467-1.333-5.467-5.933 0-1.313.469-2.386 1.236-3.227-.124-.303-.536-1.53.117-3.185 0 0 1.008-.323 3.3 1.23A11.53 11.53 0 0112 6.5c1.02.004 2.042.138 3.003.404 2.29-1.553 3.3-1.23 3.3-1.23.653 1.655.241 2.882.118 3.185.77.841 1.236 1.914 1.236 3.227 0 4.61-2.805 5.63-5.475 5.93.43.37.815 1.096.815 2.206 0 1.592-.014 2.872-.014 3.258 0 .319.19.694.8.577C20.563 22.188 24 17.75 24 12.5 24 5.873 18.627.5 12 .5z"/>
+                    </svg>
+                </a>
+                <button id="zoom-in-btn" class="control-btn" title="Zoom In">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                </button>
+                <button id="zoom-out-btn" class="control-btn" title="Zoom Out">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus-icon lucide-minus"><path d="M5 12h14"/></svg>
+                </button>
+                <button id="fit-screen-btn" class="control-btn" title="Fit to Screen">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minimize-icon lucide-minimize"><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="svg-output"></div>
+    </div>
+</main>
+    <script src="/renderer.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const editor = document.getElementById('markdown-editor');
+            const preview = document.getElementById('svg-output');
+            const slider = document.getElementById('slider');
+            const editorContainer = document.getElementById('editor-container');
+            const appContainer = document.getElementById('app-container');
+            const zoomInBtn = document.getElementById('zoom-in-btn');
+            const zoomOutBtn = document.getElementById('zoom-out-btn');
+            const fitScreenBtn = document.getElementById('fit-screen-btn');
+
+            const localStorageKey = 'markdown-mindmap-content';
+            const initialMarkdown = `# Markdown Mind Map
+## Key Features
+### Real-time rendering
+### Smooth Pan & Zoom
+### Draggable splitter
+### Content is saved locally
+
+## How to Use
+### Use hashtags for leveling
+  #### # for level 1
+  #### ## for level 2
+  #### ...
+
+
+### Multi-line nodes are supported
+  Just keep typing on the next line.
+  The text will wrap automatically.`;
+
+            const savedMarkdown = localStorage.getItem(localStorageKey);
+            editor.value = savedMarkdown || initialMarkdown;
+
+
+            function updateMindMap() {
+                const markdown = editor.value;
+                localStorage.setItem(localStorageKey, markdown);
+                const svgString = generateSVG(markdown);
+                preview.innerHTML = svgString;
+                updateTransform(); 
+            }
+            editor.addEventListener('input', updateMindMap);
+
+            let containerRect = null;
+
+            slider.addEventListener('mousedown', startResize);
+
+            function startResize(e) {
+                e.preventDefault(); 
+
+                containerRect = appContainer.getBoundingClientRect();
+
+                document.body.classList.add('resizing');
+
+                window.addEventListener('mousemove', doResize);
+                window.addEventListener('mouseup', stopResize);
+            }
+
+            function doResize(e) {
+                const newEditorWidth = e.clientX - containerRect.left;
+
+                const minWidth = 100; 
+                const maxWidth = containerRect.width - 100; 
+
+                const clampedWidth = Math.max(minWidth, Math.min(newEditorWidth, maxWidth));
+
+                window.requestAnimationFrame(() => {
+                    editorContainer.style.flexBasis = `${clampedWidth}px`;
+                });
+            }
+
+            function stopResize() {
+                document.body.classList.remove('resizing');
+                window.removeEventListener('mousemove', doResize);
+                window.removeEventListener('mouseup', stopResize);
+                containerRect = null; 
+            }
+
+            let scale = 1, isPanning = false;
+            let startPoint = { x: 0, y: 0 }, currentPoint = { x: 0, y: 0 };
+
+            function updateTransform() {
+                const g = preview.querySelector('.mindmap-content');
+                if (g) {
+                    g.style.transform = `translate(${currentPoint.x}px, ${currentPoint.y}px) scale(${scale})`;
+                }
+            }
+
+            function fitToScreen() {
+                const svg = preview.querySelector('svg');
+                const g = preview.querySelector('.mindmap-content');
+                if (!svg || !g) return;
+                try {
+                    const bbox = g.getBBox();
+                    const containerWidth = preview.clientWidth, containerHeight = preview.clientHeight;
+                    if (bbox.width === 0 || bbox.height === 0) { currentPoint = { x: containerWidth/2, y: containerHeight/2 }; scale = 1; }
+                    else {
+                        const scaleX = containerWidth / bbox.width;
+                        const scaleY = containerHeight / bbox.height;
+                        scale = Math.min(scaleX, scaleY) * 0.9;
+                        currentPoint.x = (containerWidth - bbox.width * scale) / 2 - bbox.x * scale;
+                        currentPoint.y = (containerHeight - bbox.height * scale) / 2 - bbox.y * scale;
+                    }
+                    updateTransform();
+                } catch (e) {
+                    console.error("Could not get bounding box:", e);
+                    scale = 1; currentPoint = {x: 0, y: 0}; updateTransform();
+                }
+            }
+            
+            preview.addEventListener('wheel', (e) => {
+                if (!preview.querySelector('svg')) return;
+                e.preventDefault();
+                const scaleAmount = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(0.1, scale * scaleAmount), 10);
+                const rect = preview.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left, mouseY = e.clientY - rect.top;
+                const scaleRatio = newScale / scale;
+                currentPoint.x = mouseX - (mouseX - currentPoint.x) * scaleRatio;
+                currentPoint.y = mouseY - (mouseY - currentPoint.y) * scaleRatio;
+                scale = newScale;
+                updateTransform();
+            });
+
+            preview.addEventListener('mousedown', (e) => {
+                if (!preview.querySelector('svg')) return;
+                e.preventDefault(); isPanning = true;
+                startPoint = { x: e.clientX - currentPoint.x, y: e.clientY - currentPoint.y };
+                preview.classList.add('panning');
+            });
+            window.addEventListener('mouseup', () => { isPanning = false; preview.classList.remove('panning'); });
+            window.addEventListener('mousemove', (e) => { if (!isPanning) return; e.preventDefault(); currentPoint = { x: e.clientX - startPoint.x, y: e.clientY - startPoint.y }; updateTransform(); });
+            
+            zoomInBtn.addEventListener('click', () => zoom(1.25));
+            zoomOutBtn.addEventListener('click', () => zoom(0.8));
+            fitScreenBtn.addEventListener('click', fitToScreen);
+            function zoom(factor) {
+                 if (!preview.querySelector('svg')) return;
+                 const newScale = Math.min(Math.max(0.1, scale * factor), 10);
+                 const rect = preview.getBoundingClientRect();
+                 const centerX = rect.width / 2, centerY = rect.height / 2;
+                 const scaleRatio = newScale / scale;
+                 currentPoint.x = centerX - (centerX - currentPoint.x) * scaleRatio;
+                 currentPoint.y = centerY - (centerY - currentPoint.y) * scaleRatio;
+                 scale = newScale;
+                 updateTransform();
+            }
+            
+            updateMindMap(); 
+            fitToScreen();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+/* --- Dark Mode (Default) --- */
+:root {
+    --bg-color: #1e1e1e;
+    --editor-bg: #252526;
+    --text-color: #d4d4d4;
+    --slider-color: #33373d;
+    --header-color: #8c8c8c;
+    --button-hover-bg: #3a3d41;
+    --font-main: "SF Pro Display", "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --font-mono: 'Fira Code', 'Menlo', 'Consolas', 'Courier New', monospace;
+}
+
+/* --- Automatic Light Mode --- */
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-color: #F6F7FA;
+        --editor-bg: #ffffff;
+        --text-color: #1E293B;
+        --slider-color: #ced4da;
+        --header-color: #6c757d;
+        --button-hover-bg: #e9ecef;
+    }
+
+    ::-webkit-scrollbar-thumb { background: #adb5bd; }
+    ::-webkit-scrollbar-thumb:hover { background: #868e96; }
+}
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+body.resizing {
+    cursor: col-resize;
+    user-select: none;
+}
+
+#app-container {
+    display: flex;
+    height: 100vh;
+}
+
+#editor-container, #preview-container {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-width: 0; 
+}
+
+#editor-container {
+    margin: 10px 5px 10px 10px;
+}
+
+#preview-container {
+    margin: 10px 10px 10px 5px;
+}
+
+.pane-header {
+    padding: 10px 15px;
+    font-size: 1.4rem;
+    height: 30px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--text-color);
+    background-color:  var(--bg-color);
+    flex-shrink: 0;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#preview-container .pane-header > span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pane-header div {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.mmw-logo-mobile {
+    display: none;
+}
+
+#preview-container .pane-header {
+     background-color: var(--bg-color);
+}
+
+#markdown-editor {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    background-color: var(--editor-bg);
+    border: none;
+    color: var(--text-color);
+    font-family: var(--font-mono);
+    font-size: 16px;
+    padding: 20px;
+    resize: none;
+    outline: none;
+    box-sizing: border-box;
+    line-height: 1.6;
+    border-radius: 8px;
+}
+
+#slider {
+    margin-top: 60px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    flex: 0 0 5px;
+    cursor: col-resize;
+    transition: background-color 0.2s ease;
+}
+
+#slider:hover {
+    background-color: #1F9EEC;
+}
+
+#svg-output {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: var(--bg-color);
+}
+
+#svg-output svg {
+    background-color: var(--editor-bg);
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    display: block;
+    border-radius: 8px;
+}
+
+#svg-output.panning svg {
+    cursor: grabbing;
+}
+
+#svg-output svg .mindmap-content {
+    transition: transform 0.2s ease;
+}
+
+.pane-controls {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.pane-controls a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--header-color);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.pane-controls a svg {
+    position: static;
+    width: 1.3em;
+    height: 1.3em;
+    vertical-align: middle;
+}
+
+.pane-controls a:hover {
+    color: var(--text-color);
+}
+
+.github-icon {
+    display: none;
+    height: 25px !important;
+    width: 25px !important;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: var(--header-color);
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+}
+.control-btn:hover svg {
+    stroke: var(--text-color);
+}
+.control-btn svg {
+    transition: all 0.2s ease;
+}
+
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #4a4a4a; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #5a5a5a; }
+
+
+@media (max-width: 900px) {
+   .hide-on-mobile {
+        display: none;
+    }
+
+    .github-icon {
+        display: block;
+    }
+}
+
+@media (max-width: 740px) {
+    #app-container {
+        flex-direction: column-reverse;
+    }
+
+    #slider {
+        display: none;
+    }
+
+    #editor-container, #preview-container {
+        flex: 1; 
+        min-height: 0; 
+        margin: 0; 
+    }
+
+    #preview-container { 
+        margin: 10px 10px 5px 10px;
+    }
+
+    #editor-container { 
+        margin: 5px 10px 10px 10px;
+    }
+    
+    body.resizing {
+        cursor: default;
+        user-select: auto;
+    }
+
+    .pane-header {
+        font-size: 1.2rem;
+        padding: 8px 12px;
+        height: auto;
+    }
+
+    .hide-on-mobile {
+        display: none;
+    }
+
+    .control-btn {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .pane-controls a {
+        margin-right: 4px;
+    }
+
+    .mmw-logo-mobile {
+        display: flex;
+    }
+
+    .mmw-logo-desktop {
+        display: none;
+    }
+}
