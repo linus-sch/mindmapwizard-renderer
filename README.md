@@ -42,12 +42,19 @@ open demo/index.html
 3. Edit the sample Markdown in demo/index.html (or load your own Markdown) to see live rendering to SVG.
 <br>
 
+Or use our API:
+https://mindmapwizard.com/api/docs
+
 
 ## File structure
 - src/renderer.js — core JS that converts Markdown to SVG  
 - demo/index.html — simple page demonstrating the renderer  
 - demo/styles.css — minimal styling for demo and SVG  
 <br>
+
+## API
+We’ve built a text-to-mind-map API that generates SVG mind map from topic inputs using the mindmapwizard-renderer. <br>
+Check it out [here](https://mindmapwizard.com/api/docs).
 
 ## Attribution
 If you share demos, screenshots, or examples publicly, include this credit where reasonable:
