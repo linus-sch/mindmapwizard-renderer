@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mind Map Wizard Renderer Demo</title>
 
-        <link rel="icon" type="image/png" href="https://js.mindmapwizard.com/assets/favicon128.png" sizes="16x16">
-        <link rel="icon" type="image/png" href="https://js.mindmapwizard.com/assets/favicon96.png" sizes="32x32">
-        <link rel="icon" type="image/png" href="https://js.mindmapwizard.com/assets/favicon64.png" sizes="48x48">
-        <link rel="icon" type="image/png" href="https://js.mindmapwizard.com/assets/favicon48.png" sizes="64x48">
-        <link rel="icon" type="image/png" href="https://js.mindmapwizard.com/assets/favicon32.png" sizes="96x96">
-        <link rel="icon" type="image/png" href="https://js.mindmapwizard.com/assets/favicon16.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="/assets/favicon128.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="/assets/favicon96.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/assets/favicon64.png" sizes="48x48">
+        <link rel="icon" type="image/png" href="/assets/favicon48.png" sizes="64x48">
+        <link rel="icon" type="image/png" href="/assets/favicon32.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="/assets/favicon16.png" sizes="96x96">
 
         <link rel="stylesheet" href="/styles.css">
 
@@ -22,14 +22,14 @@
         <meta property="og:description" content="A lightweight JavaScript tool that converts Markdown text into colorful SVG mind maps.
         ">
         <meta property="og:type" content="website">
-        <meta property="og:image" content="https://js.mindmapwizard.com/assets/meta-img-light.jpg">
+        <meta property="og:image" content="/assets/meta-img-light.jpg">
         <meta property="og:url" content="https://js.mindmapwizard.com">
 
         <!-- Twitter Card (optional, for better sharing) -->
         <meta name="twitter:card" content="summary">
         <meta name="twitter:title" content="Mind Map Wizard Renderer Demo">
         <meta name="twitter:description" content="A lightweight JavaScript tool for rendering Markdown as SVG mind maps.">
-        <meta name="twitter:image" content="https://js.mindmapwizard.com/assets/meta-img-light.jpg">
+        <meta name="twitter:image" content="/assets/meta-img-light.jpg">
 </head>
 <body>
 
@@ -49,7 +49,7 @@
         <div class="pane-header">
             <span>
             <a href="https://github.com/linus-sch/mindmapwizard-renderer" style="text-decoration: none;" class="mmw-logo-mobile">
-                <img src="https://js.mindmapwizard.com/assets/favicon64.png" alt="MMW Logo" width="35px" style="position: relative; top: 3px;">
+                <img src="/assets/favicon64.png" alt="MMW Logo" width="35px" style="position: relative; top: 3px;">
             </a>
                 Mind Map</span>
             <div class="pane-controls">
@@ -160,18 +160,18 @@
             let startPoint = { x: 0, y: 0 }, currentPoint = { x: 0, y: 0 };
 
             function updateTransform() {
-                const g = preview.querySelector('.mindmap-content');
-                if (g) {
-                    g.style.transform = `translate(${currentPoint.x}px, ${currentPoint.y}px) scale(${scale})`;
+                const svg = preview.querySelector('svg');
+                if (svg) {
+                    svg.style.transform = `scale(${scale}) translate(${currentPoint.x / scale}px, ${currentPoint.y / scale}px)`;
+                    svg.style.transformOrigin = '0 0';
                 }
             }
 
             function fitToScreen() {
                 const svg = preview.querySelector('svg');
-                const g = preview.querySelector('.mindmap-content');
-                if (!svg || !g) return;
+                if (!svg) return;
                 try {
-                    const bbox = g.getBBox();
+                    const bbox = svg.getBBox();
                     const containerWidth = preview.clientWidth, containerHeight = preview.clientHeight;
                     if (bbox.width === 0 || bbox.height === 0) { currentPoint = { x: containerWidth/2, y: containerHeight/2 }; scale = 1; }
                     else {
@@ -226,9 +226,9 @@
                  updateTransform();
             }
             
-            updateMindMap(); 
-            fitToScreen();
+            updateMindMap();
         });
     </script>
 </body>
 </html>
+
