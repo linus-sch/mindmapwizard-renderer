@@ -134,7 +134,7 @@ body.resizing {
     height: 100%;
     box-sizing: border-box;
     overflow: hidden;
-    background-color: var(--bg-color);
+    background-color: var(--editor-bg);
 }
 
 #svg-output svg {
@@ -150,7 +150,7 @@ body.resizing {
     cursor: grabbing;
 }
 
-#svg-output svg .mindmap-content {
+#svg-output svg {
     transition: transform 0.2s ease;
 }
 
